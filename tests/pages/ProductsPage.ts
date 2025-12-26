@@ -22,4 +22,14 @@ async addToCartBike() {
       .locator('div button[id="remove-sauce-labs-bike-light"]');
     await removeButton.click();
   }
+
+  async selectAllItems(){
+    const buttons = this.page
+      .locator('[class="pricebar"] button');
+    const count = await buttons.count();
+    expect(count).toBeGreaterThan(0);
+    for (let i = 0; i < count; i++) {
+    await buttons.nth(i).click();
+}
+  }
 }
